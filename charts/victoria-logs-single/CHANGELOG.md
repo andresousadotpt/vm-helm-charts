@@ -1,6 +1,6 @@
 ## Next release
 
-- feature: support `tpl` in `basicAuth` on `VMServiceScrape`
+- feature: support `tpl` in `basicAuth` on `VMServiceScrape` and `ServiceMonitor`
 
 ## 0.11.27
 
