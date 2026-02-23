@@ -37,7 +37,7 @@ webhooks:
     failurePolicy: {{ $.Values.admissionWebhooks.policy }}
     name: '{{ $crd.metadata.name }}'
     admissionReviewVersions:
-      - {{ $version.name }}
+      - v1
     sideEffects: None
     objectSelector:
       matchExpressions:
