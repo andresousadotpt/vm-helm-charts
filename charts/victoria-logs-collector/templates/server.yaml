@@ -63,13 +63,9 @@ spec:
             {{- with .Values.extraVolumeMounts }}
             {{- toYaml . | nindent 12 }}
             {{- end }}
-            - name: varlog
-              mountPath: /var/log
-              readOnly: true
-              # /var/lib is needed in environments like Minikube, where logs may symlink to /var/lib paths.
-            - name: varlib
-              mountPath: /var/lib
-              readOnly: true
+            {{- with .Values.defaultVolumeMounts }}
+            {{- toYaml . | nindent 12 }}
+            {{- end }}
             - name: vl-collector-data
               mountPath: {{ $args.tmpDataPath }}
             {{- include "vm.license.mount" . | nindent 12 }}
@@ -77,13 +73,14 @@ spec:
         {{- with .Values.extraVolumes }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
-        - name: varlog
-          hostPath:
-            path: /var/log
-        - name: varlib
-          hostPath:
-            path: /var/lib
+        {{- with .Values.defaultVolumes }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
         - name: vl-collector-data
+          {{- if .Values.persistence.hostPath.enabled }}
           hostPath:
             path: {{ $args.tmpDataPath }}
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
         {{- include "vm.license.volume" . | nindent 8 }}

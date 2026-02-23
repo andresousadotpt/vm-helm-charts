@@ -213,3 +213,27 @@ license:
     name: ""
     # -- Key in secret with license key
     key: ""
+
+persistence:
+  hostPath:
+    enabled: true
+
+# -- Default volumes that are mounted into pods. In most cases, these should not be changed.
+# Use `extraVolumes`/`extraVolumeMounts` for additional custom volumes.
+defaultVolumes:
+  - name: varlog
+    hostPath:
+      path: /var/log
+  - name: varlib
+    hostPath:
+      path: /var/lib
+
+# -- Mounts for defaultVolumes
+defaultVolumeMounts:
+  - name: varlog
+    mountPath: /var/log
+    readOnly: true
+    # /var/lib is needed in environments like Minikube, where logs may symlink to /var/lib paths.
+  - name: varlib
+    mountPath: /var/lib
+    readOnly: true
