@@ -58,7 +58,7 @@
     {{- fail "at least one remoteWrite configuration must be provided" }}
   {{- end }}
 
-  {{- $args := dict "tmpDataPath" "/var/lib/vl-collector" }}
+  {{- $args := default dict }}
   {{- $args = mergeOverwrite $args (fromYaml (include "vm.license.flag" .)) }}
 
   {{- $collector := $Values.collector | default dict }}

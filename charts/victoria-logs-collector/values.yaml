@@ -199,6 +199,7 @@ extraArgs:
   envflag.enable: true
   envflag.prefix: VL_
   loggerFormat: json
+  tmpDataPath: /var/lib/vl-collector
 
 # -- Enterprise license key configuration for VictoriaLogs enterprise.
 # Required only for VictoriaLogs enterprise. Check docs [here](https://docs.victoriametrics.com/victoriametrics/enterprise/#victorialogs-enterprise-features),
@@ -215,8 +216,7 @@ license:
     key: ""
 
 persistence:
-  hostPath:
-    enabled: true
+  volume: {}
 
 # -- Default volumes that are mounted into pods. In most cases, these should not be changed.
 # Use `extraVolumes`/`extraVolumeMounts` for additional custom volumes.

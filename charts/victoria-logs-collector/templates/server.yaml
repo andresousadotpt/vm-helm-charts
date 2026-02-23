@@ -77,10 +77,10 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
         - name: vl-collector-data
-          {{- if .Values.persistence.hostPath.enabled }}
-          hostPath:
-            path: {{ $args.tmpDataPath }}
+          {{- if .Values.persistence.volume }}
+          {{- tpl (toYaml .Values.persistence.volume | nindent 10) . }}
           {{- else }}
-          emptyDir: {}
+          hostPath:
+            path: {{ .Values.extraArgs.tmpDataPath }}
           {{- end }}
         {{- include "vm.license.volume" . | nindent 8 }}
