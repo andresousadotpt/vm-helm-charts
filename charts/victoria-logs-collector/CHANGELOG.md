@@ -1,5 +1,6 @@
 ## Next release
 
+- bump vlagent version to [v1.46.0](https://github.com/VictoriaMetrics/VictoriaLogs/releases/tag/v1.46.0).
 - feature: add support for `tpl` into `remoteWrite[]` values. See [#2690](https://github.com/VictoriaMetrics/helm-charts/issues/2690)
 - add support for daemonSet updateStrategy
 - add defaultVolumes and defaultVolumeMounts to provide ability to update default volumes and mounts. See [#2707](https://github.com/VictoriaMetrics/helm-charts/issues/2707). 

@@ -1,5 +1,6 @@
 ## Next release
 
+- bump VictoriaLogs version to [v1.46.0](https://github.com/VictoriaMetrics/VictoriaLogs/releases/tag/v1.46.0).
 - support vertical pod autoscaler
 
 ## 0.0.9
